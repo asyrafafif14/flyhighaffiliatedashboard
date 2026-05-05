@@ -1,6 +1,7 @@
 # Dependencies and local runtime artifacts
 node_modules/
 affiliate-dashboard-web/node_modules/
+.netlify/
 
 # Generated static output; Netlify rebuilds this from the CSV
 affiliate-dashboard-web/dist/
