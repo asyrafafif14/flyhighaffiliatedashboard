@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flyhigh Affiliate Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Dashboard navigation">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">F</div>
+          <div>
+            <p class="brand-name">Flyhigh</p>
+            <p class="brand-subtitle">Affiliate Report</p>
+          </div>
+        </div>
+        <nav>
+          <a href="#overview" class="nav-link active">Overview</a>
+          <a href="#affiliates" class="nav-link">Affiliates</a>
+          <a href="#products" class="nav-link">Products</a>
+          <a href="#privacy" class="nav-link">Data Safety</a>
+        </nav>
+      </aside>
+
+      <main>
+        <header class="topbar" id="overview">
+          <div>
+            <h1>Affiliate Dashboard</h1>
+            <p>April 2026 sales performance built from sanitized CSV summary data.</p>
+          </div>
+          <div class="source-note">
+            <span>Source</span>
+            <strong id="sourceFile">Loading...</strong>
+          </div>
+        </header>
+
+        <section class="kpi-grid" aria-label="Affiliate performance KPIs">
+          <article class="metric-card">
+            <span>Paid affiliate revenue</span>
+            <strong id="paidAffiliateRevenue">-</strong>
+          </article>
+          <article class="metric-card">
+            <span>Paid affiliate transactions</span>
+            <strong id="paidAffiliateTransactions">-</strong>
+          </article>
+          <article class="metric-card">
+            <span>Referral coverage</span>
+            <strong id="referralCoverage">-</strong>
+          </article>
+          <article class="metric-card">
+            <span>Active paid affiliates</span>
+            <strong id="activeAffiliates">-</strong>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel chart-panel">
+            <div class="panel-header">
+              <div>
+                <h2>Top Affiliates</h2>
+                <p>Paid revenue by affiliate</p>
+              </div>
+            </div>
+            <div class="bar-chart" id="affiliateChart" aria-label="Top affiliates by paid revenue"></div>
+          </article>
+
+          <article class="panel chart-panel">
+            <div class="panel-header">
+              <div>
+                <h2>Daily Trend</h2>
+                <p>Paid affiliate revenue across April</p>
+              </div>
+            </div>
+            <svg class="line-chart" id="dailyChart" role="img" aria-label="Daily paid affiliate revenue trend"></svg>
+          </article>
+        </section>
+
+        <section class="workspace" id="affiliates">
+          <div class="panel affiliate-list-panel">
+            <div class="panel-header">
+              <div>
+                <h2>Sales Per Affiliate</h2>
+                <p>Click an affiliate to see product breakdown</p>
+              </div>
+              <input id="affiliateSearch" class="search-input" type="search" placeholder="Search affiliate" />
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Affiliate</th>
+                    <th>Code</th>
+                    <th>Paid Txns</th>
+                    <th>Revenue</th>
+                    <th>Share</th>
+                  </tr>
+                </thead>
+                <tbody id="affiliateRows"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel detail-panel">
+            <div class="panel-header">
+              <div>
+                <h2 id="detailTitle">Product Breakdown</h2>
+                <p id="detailSubtitle">Select an affiliate from the list</p>
+              </div>
+              <div class="mini-stat">
+                <span>Products</span>
+                <strong id="detailProducts">-</strong>
+              </div>
+            </div>
+            <div class="detail-summary">
+              <div>
+                <span>Paid revenue</span>
+                <strong id="detailRevenue">-</strong>
+              </div>
+              <div>
+                <span>Paid transactions</span>
+                <strong id="detailTransactions">-</strong>
+              </div>
+              <div>
+                <span>Average ticket</span>
+                <strong id="detailAverage">-</strong>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Paid Txns</th>
+                    <th>Revenue</th>
+                    <th>Pending</th>
+                  </tr>
+                </thead>
+                <tbody id="productRows"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="products">
+          <div class="panel-header">
+            <div>
+              <h2>Top Product Revenue</h2>
+              <p>Aggregated product sales by affiliate, without customer-level data</p>
+            </div>
+          </div>
+          <div class="product-grid" id="topProducts"></div>
+        </section>
+
+        <section class="privacy-panel" id="privacy">
+          <div>
+            <h2>Safer Data Model</h2>
+            <p id="privacyText">This dashboard publishes summarized affiliate and product metrics only.</p>
+          </div>
+          <ul>
+            <li>No student names in the deployed JSON</li>
+            <li>No parent names or phone numbers in the deployed JSON</li>
+            <li>No payment references or transaction-level rows in the deployed JSON</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>

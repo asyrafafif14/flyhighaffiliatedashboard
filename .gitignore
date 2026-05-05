@@ -1,0 +1,17 @@
+# Dependencies and local runtime artifacts
+node_modules/
+affiliate-dashboard-web/node_modules/
+
+# Generated static output; Netlify rebuilds this from the CSV
+affiliate-dashboard-web/dist/
+
+# Local screenshots and browser profiles from QA
+affiliate-dashboard-web/dashboard-*.png
+affiliate-dashboard-web/edge-profile-*/
+
+# Analyst workbook outputs generated during exploration
+outputs/
+
+# Older local source variants not used by the web build
+LMS Report 300426*.csv
+PENDING RESPECTIVE AFFILIATE.xlsx

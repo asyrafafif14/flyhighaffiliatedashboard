@@ -1,0 +1,10 @@
+{
+  "name": "flyhigh-affiliate-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/generate-data.mjs",
+    "start": "node scripts/serve.mjs"
+  }
+}
