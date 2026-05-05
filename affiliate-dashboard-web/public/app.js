@@ -33,7 +33,9 @@ function setText(id, value) {
 
 function renderKpis(data) {
   setText("sourceFile", data.source.file);
+  setText("totalPaidRevenue", formatCurrency(data.kpis.totalPaidRevenue));
   setText("paidAffiliateRevenue", formatCurrency(data.kpis.paidAffiliateRevenue));
+  setText("paidUnreferredRevenue", formatCurrency(data.kpis.paidUnreferredRevenue));
   setText("paidAffiliateTransactions", number.format(data.kpis.paidAffiliateTransactions));
   setText("referralCoverage", percent.format(data.kpis.referralCoverage));
   setText("activeAffiliates", number.format(data.kpis.paidActiveAffiliates));
