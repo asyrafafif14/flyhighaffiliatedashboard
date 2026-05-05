@@ -448,7 +448,7 @@ tr.selected td {
 }
 
 .product-card {
-  min-height: 142px;
+  min-height: 172px;
   padding: 15px;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -477,6 +477,42 @@ tr.selected td {
   display: block;
   margin-top: 8px;
   font-size: 20px;
+}
+
+.top-affiliate {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.top-affiliate span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.top-affiliate b,
+.top-affiliate em {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.top-affiliate b {
+  margin-top: 5px;
+  color: #0f172a;
+  font-size: 12px;
+}
+
+.top-affiliate em {
+  margin-top: 3px;
+  color: var(--accent);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
 }
 
 .privacy-panel {

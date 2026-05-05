@@ -152,9 +152,13 @@ function renderTopProducts(products) {
       (product) => `
         <article class="product-card">
           <h3 title="${product.product}">${product.product}</h3>
-          <p>${product.affiliateName} - ${product.affiliateCode}</p>
           <strong>${formatCurrency(product.paidRevenue)}</strong>
-          <p>${number.format(product.paidTransactions)} paid transactions</p>
+          <p>${number.format(product.paidTransactions)} total paid transactions</p>
+          <div class="top-affiliate">
+            <span>Highest affiliate</span>
+            <b>${product.topAffiliateName} - ${product.topAffiliateCode}</b>
+            <em>${formatCurrency(product.topAffiliatePaidRevenue)} · ${number.format(product.topAffiliatePaidTransactions)} txns</em>
+          </div>
         </article>
       `,
     )

@@ -228,7 +228,40 @@ function summarize(rows) {
     .filter((affiliate) => affiliate.paidTransactions > 0 || affiliate.pendingTransactions > 0)
     .sort((a, b) => b.paidRevenue - a.paidRevenue || b.paidTransactions - a.paidTransactions || a.name.localeCompare(b.name));
 
-  const topProducts = productBreakdown.slice(0, 20);
+  const productTotalsMap = new Map();
+  for (const row of productBreakdown) {
+    const product = ensureGroup(productTotalsMap, row.product, () => ({
+      product: row.product,
+      paidTransactions: 0,
+      paidRevenue: 0,
+      pendingTransactions: 0,
+      pendingRevenue: 0,
+      topAffiliateName: "",
+      topAffiliateCode: "",
+      topAffiliatePaidTransactions: 0,
+      topAffiliatePaidRevenue: 0,
+    }));
+
+    product.paidTransactions += row.paidTransactions;
+    product.paidRevenue += row.paidRevenue;
+    product.pendingTransactions += row.pendingTransactions;
+    product.pendingRevenue += row.pendingRevenue;
+
+    if (
+      row.paidRevenue > product.topAffiliatePaidRevenue ||
+      (row.paidRevenue === product.topAffiliatePaidRevenue && row.paidTransactions > product.topAffiliatePaidTransactions)
+    ) {
+      product.topAffiliateName = row.affiliateName;
+      product.topAffiliateCode = row.affiliateCode;
+      product.topAffiliatePaidTransactions = row.paidTransactions;
+      product.topAffiliatePaidRevenue = row.paidRevenue;
+    }
+  }
+
+  const topProducts = [...productTotalsMap.values()]
+    .filter((product) => product.paidTransactions > 0)
+    .sort((a, b) => b.paidRevenue - a.paidRevenue || b.paidTransactions - a.paidTransactions || a.product.localeCompare(b.product))
+    .slice(0, 20);
   const daily = [...dailyMap.values()].sort((a, b) => a.date.localeCompare(b.date));
 
   return {
